@@ -336,7 +336,9 @@ bool SVOS_RR_RE_TE(const string& name, string src_pointcloud, string des_pointcl
 
 	////////////////////投票/////////////////
 	vector<float> final_score(total_num, 0);
-	if (matrix_SVOS)	//SVOS矩阵乘法形式
+
+	//SVOS矩阵乘法形式
+	if (matrix_SVOS)	
 	{
 		Eigen::MatrixXf SVOS_Matrix, temp_Matrix;
 		Graph = Graph.cwiseSign().cwiseAbs();
@@ -354,6 +356,8 @@ bool SVOS_RR_RE_TE(const string& name, string src_pointcloud, string des_pointcl
 			correspondence[i].vote_score = final_score[i];
 		}
 	}
+
+	//SVOS默认投票算法
 	else
 	{
 		int static_node_num = correspondence.size();
