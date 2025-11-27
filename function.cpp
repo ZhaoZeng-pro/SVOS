@@ -338,13 +338,19 @@ bool SVOS_RR_RE_TE(const string& name, string src_pointcloud, string des_pointcl
 	vector<float> final_score(total_num, 0);
 	if (matrix_SVOS)	//SVOS¾ØÕó³Ë·¨ÐÎÊ½
 	{
-		Eigen::MatrixXf SVOS_Matrix;
-		SVOS_Matrix = Graph * Graph;
+		Eigen::MatrixXf SVOS_Matrix, temp_Matrix;
+		Graph = Graph.cwiseSign().cwiseAbs();
+		temp_Matrix = Graph * Graph;
 		
+		SVOS_Matrix = (temp_Matrix.array() > 1).select(temp_Matrix, 0);
+		SVOS_Matrix.diagonal().setZero();
+
+		SVOS_Matrix = SVOS_Matrix * Graph;
 
 		for (int i = 0; i < total_num; i++)
 		{
-			final_score[i] = Graph.row(i) * SVOS_Matrix.col(i);
+			//final_score[i] = Graph.row(i) * SVOS_Matrix.col(i);
+			final_score[i] = SVOS_Matrix(i, i);
 			correspondence[i].vote_score = final_score[i];
 		}
 	}
