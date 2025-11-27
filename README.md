@@ -6,7 +6,7 @@ We provide a simple demo in C++
 ## Build
 SVOS only depends on [PCL](https://github.com/PointCloudLibrary/pcl/tags) (`>= 1.10.1`, version `1.10.1` is recommended). Please install the library first.
 
-To build SVOS, you need [CMake](https://cmake.org/download/) (`>= 3.23`) and, of course, a compiler that supports `>= C++11`. The code in this repository has been tested on Windows (MSVC `=2022` `x64`), and Linux (GCC `=10.4.0`). Machines nowadays typically provide higher [support](https://en.cppreference.com/w/cpp/compiler_support), so you should be able to build MAC on almost all platforms.
+To build SVOS, you need [CMake](https://cmake.org/download/) (`>= 3.23`) and, of course, a compiler that supports `>= C++11`.
 
 We provide the CMakeLists file. Simply use CMake to compile and link the PCL library, and you're done.
 
