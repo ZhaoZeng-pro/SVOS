@@ -16,8 +16,6 @@ float mean_time = 0.0;	//记录平均耗时
 int count_num = 0;
 
 
-bool matrix_SVOS = false; //如果效率较慢，可以使用SVOS矩阵乘法模式，这种模式下效率只与correspondence规模有关；矩阵乘法模式建议使用pytorch张量进行并行计算
-
 int main()
 {
 	string resultPath = "D:/code/c++/SVOS/data/fpfh/result/";
